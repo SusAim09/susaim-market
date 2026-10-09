@@ -3,386 +3,231 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#050505">
-<title>SusAim | Market</title>
-<meta name="description" content="SusAim Market — a dark gaming-inspired digital marketplace.">
+<title>SUSAIM MARKET | Digital Deals</title>
 <style>
-:root {
-  --bg:#050505;
-  --panel:#101010;
-  --red:#f0182b;
-  --white:#f4f1f1;
-  --muted:#aaa5a5;
-  --line:#393333;
-}
+:root{--red:#f0182b;--white:#f3eeee;--bg:#050505;--panel:#0b0b0b;--muted:#aaa}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  margin:0;background:var(--bg);color:var(--white);
-  font-family:Arial,Helvetica,sans-serif;overflow-x:hidden;
-}
-body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
-  opacity:.16;
-  background-image:
-    repeating-linear-gradient(119deg,transparent 0 80px,#777 81px,transparent 82px 150px),
-    radial-gradient(ellipse at 20% 20%,#541017 0,transparent 38%);
-}
-a{color:inherit}
+body{margin:0;background:var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
 button,input{font:inherit}
 button{cursor:pointer}
-header,main,footer,.hero,.ticker{position:relative;z-index:1}
-header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:18px 6%;border-bottom:1px solid #292424;
-  background:#050505eF;gap:12px;
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:
+radial-gradient(ellipse at 10% 10%,#3a090d 0,transparent 28%),
+radial-gradient(ellipse at 90% 65%,#240609 0,transparent 30%),
+repeating-linear-gradient(132deg,transparent 0 90px,#40101544 91px,transparent 93px 170px),
+repeating-linear-gradient(25deg,transparent 0 140px,#eee1e111 141px,transparent 143px 210px),#050505}
+body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:5;opacity:.14;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
+header{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:15px 4%;border-bottom:2px solid #7774;background:#050505}
+.brand{font-weight:1000;font-size:24px;font-style:italic;line-height:.85;letter-spacing:-1.6px;transform:skew(-7deg)}
+.brand span{display:block;color:var(--red);font-size:17px;text-align:right}
+nav{display:flex;gap:25px;align-items:center}
+nav a{color:#ddd;text-decoration:none;font-weight:900;font-size:13px;font-style:italic;text-transform:uppercase}
+nav a:first-child,nav a:hover{color:var(--red)}
+.searchtop{width:220px;background:#080808;color:white;border:1px solid #aaa;padding:11px}
+.topicons{font-size:19px;white-space:nowrap}
+.topicons span{padding:0 5px}
+.hero{position:relative;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;min-height:300px;padding:25px 5%;gap:20px;overflow:hidden;border-bottom:3px solid #eee8}
+.hero:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(150deg,transparent 0 60px,#f0182b30 61px 64px,transparent 65px 110px);pointer-events:none}
+.hero-copy,.hero-cat{position:relative;z-index:1}
+.hero h1{margin:0;font-size:clamp(47px,8vw,95px);font-weight:1000;line-height:.78;letter-spacing:-5px;font-style:italic;text-shadow:4px 4px 0 #6d0711;transform:skew(-5deg)}
+.hero h1 span{display:block;color:var(--red);margin:12px 0 0 15%;font-size:.8em}
+.tagline{font-size:12px;font-style:italic;letter-spacing:1px;margin-top:28px}
+.tagline b{color:var(--red);padding:0 4px}
+.hero-cat{height:230px;display:grid;place-items:center}
+.cathead{width:200px;height:165px;position:relative;background:linear-gradient(145deg,#1b1b1b,#020202 65%);border:3px solid #e8e5e5;clip-path:polygon(0 23%,22% 0,35% 22%,65% 22%,78% 0,100% 23%,93% 78%,75% 100%,25% 100%,7% 78%);filter:drop-shadow(0 0 18px #f0182b55)}
+.cathead:before,.cathead:after{content:"";position:absolute;top:78px;width:42px;height:19px;background:#ff152b;box-shadow:0 0 20px #f0182b;clip-path:polygon(0 0,100% 25%,68% 100%,10% 75%)}
+.cathead:before{left:36px}.cathead:after{right:36px;transform:scaleX(-1)}
+.crown{position:absolute;top:0;font-size:63px;color:#eee;z-index:2;text-shadow:3px 3px var(--red)}
+.scratches{position:absolute;color:var(--red);font-size:40px;transform:rotate(-20deg);font-weight:1000}
+.s1{left:4%;top:15%}.s2{right:4%;bottom:12%}
+.categories{display:grid;grid-template-columns:repeat(7,minmax(70px,1fr));gap:10px;padding:15px 4%;border-bottom:2px solid #e4e0e0;background:#080808}
+.category{min-height:72px;border:1px solid #777;background:#0a0a0a;color:white;text-transform:uppercase;font-size:11px;font-weight:900;font-style:italic;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;clip-path:polygon(5% 0,100% 0,95% 100%,0 100%)}
+.category .ico{font-size:23px}
+.category.active,.category:hover{background:var(--red);border-color:var(--red)}
+.shop{display:grid;grid-template-columns:195px 1fr;gap:23px;padding:22px 4% 40px;max-width:1500px;margin:auto}
+.sidebar{border-right:1px solid #7775;padding-right:16px}
+.sidebar h2{font-size:23px;font-style:italic;margin:0 0 16px}
+.sidebtn{display:flex;gap:12px;align-items:center;width:100%;padding:12px 10px;border:0;background:transparent;color:#ddd;text-align:left;font-size:13px}
+.sidebtn:hover,.sidebtn.active{background:var(--red);color:white}
+.sidebtn span{font-size:18px}
+.sidenote{margin-top:35px;color:#aaa;font-weight:1000;font-style:italic;font-size:21px;line-height:1.2;transform:rotate(-5deg)}
+.sidenote span{color:var(--red)}
+.shopheading{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:18px}
+.shopheading h2{font-size:clamp(23px,4vw,34px);font-style:italic;text-transform:uppercase;margin:0}
+.shopheading h2 span{color:var(--red)}
+.searchrow{display:flex;gap:10px;margin-bottom:18px}
+.searchrow input,.searchrow select{min-width:0;background:#070707;color:#eee;border:1px solid #888;padding:12px;width:100%}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.card{position:relative;min-width:0;background:linear-gradient(145deg,#151515,#050505);border:1px solid #d2cccc;padding:14px 13px 16px;box-shadow:inset 0 0 0 3px #181818,4px 4px 0 #31070c;overflow:hidden}
+.card:before{content:"";position:absolute;left:0;top:0;width:48px;height:3px;background:var(--red)}
+.card:after{content:"✦";position:absolute;right:8px;top:4px;color:#ddd;font-size:19px}
+.card:hover{border-color:var(--red);transform:translateY(-3px)}
+.badge{position:absolute;top:12px;left:10px;color:var(--red);font-weight:1000;font-size:10px;font-style:italic;text-transform:uppercase}
+.producticon{height:103px;display:grid;place-items:center;font-size:58px;font-weight:1000;color:#eee;text-shadow:2px 2px #555}
+.producticon.spotify{color:#d9d9d9}.producticon.crunchy{color:#f26b30}.producticon.nord{color:#dedede}.producticon.prime{font-size:24px}
+.card h3{font-size:14px;font-style:italic;text-transform:uppercase;margin:6px 0 9px}
+.desc{font-size:11px;line-height:1.6;color:#ddd;min-height:32px}
+.price{font-size:22px;font-weight:1000;font-style:italic;color:var(--red);margin:9px 0 12px}
+.buy{display:block;width:100%;border:0;background:var(--red);color:white;padding:11px 6px;font-size:11px;font-weight:1000;font-style:italic;text-transform:uppercase;clip-path:polygon(4% 0,100% 0,96% 100%,0 100%)}
+.buy:hover{background:#fff;color:#111}
+footer{display:flex;justify-content:space-around;align-items:center;gap:15px;flex-wrap:wrap;padding:20px 4%;border-top:3px solid #eee;background:#080808;color:#ddd;font-size:12px}
+footer b{font-size:13px}footer span{color:var(--red)}
+.modal{display:none;position:fixed;inset:0;z-index:20;background:#000e;padding:20px}
+.modalbox{max-width:400px;margin:12vh auto;background:#101010;border:1px solid var(--red);padding:25px}
+.modalbox h2{font-style:italic}.modalbox p{color:#bbb;font-size:13px;line-height:1.6}
+.close{float:right;background:#222;color:white;border:1px solid #777;padding:8px}
+.modalbox a{display:block;text-decoration:none;text-align:center;margin-top:10px;padding:12px;background:#27080d;border:1px solid var(--red);font-weight:bold}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.categories{grid-template-columns:repeat(4,minmax(0,1fr))}.searchtop{width:170px}}
+@media(max-width:650px){
+ header{flex-wrap:wrap;padding:13px 4%;gap:13px}
+ .brand{font-size:21px}nav{order:3;width:100%;justify-content:space-between;gap:8px}
+ nav a{font-size:11px}.searchtop{flex:1;min-width:100px;width:auto}
+ .hero{grid-template-columns:1fr;padding:35px 5% 22px;text-align:center}
+ .hero h1{font-size:clamp(50px,14vw,78px);letter-spacing:-3px}
+ .hero h1 span{margin-left:0}.hero-cat{height:160px;grid-row:1}
+ .cathead{width:145px;height:120px}.cathead:before,.cathead:after{top:57px;width:31px}
+ .cathead:before{left:25px}.cathead:after{right:25px}
+ .crown{font-size:48px}.tagline{font-size:10px}
+ .categories{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding:12px 3%}
+ .category{min-height:65px;font-size:9px}
+ .shop{grid-template-columns:1fr;padding:18px 4% 30px;gap:18px}
+ .sidebar{border-right:0;border-bottom:1px solid #7775;padding:0 0 12px}
+ .sidebar h2{font-size:20px;margin-bottom:8px}
+ .sideitems{display:flex;flex-wrap:wrap;gap:5px}
+ .sidebtn{width:auto;padding:9px;font-size:11px}
+ .sidenote{display:none}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .card{padding:12px 10px}
+ .producticon{height:80px;font-size:44px}
+ .card h3{font-size:12px}.price{font-size:19px}
+ .desc{font-size:10px}
+ footer{justify-content:center;text-align:center}
 }
-.logo{
-  font-size:20px;font-weight:1000;letter-spacing:-1px;
-  text-transform:uppercase;
-}
-.logo span{color:var(--red)}
-.header-tag{
-  font-size:10px;color:#d5cece;letter-spacing:2px;
-  border:1px solid #4a2529;padding:9px 11px;
-}
-.hero{
-  padding:45px 5% 42px;text-align:center;overflow:hidden;
-  background:
-    radial-gradient(ellipse at 50% 20%,#391015 0,transparent 48%),
-    linear-gradient(#090909,#050505);
-  border-bottom:1px solid #302426;
-}
-.hero:before,.hero:after{
-  content:"✦";position:absolute;color:var(--red);
-  font-size:36px;opacity:.65;animation:twinkle 3s infinite alternate;
-}
-.hero:before{left:8%;top:22%}
-.hero:after{right:9%;bottom:22%;animation-delay:1.2s}
-@keyframes twinkle{from{opacity:.25;transform:scale(.8)}to{opacity:1;transform:scale(1.1)}}
-.mascot{
-  width:112px;height:100px;margin:0 auto 18px;position:relative;
-  display:grid;place-items:center;
-  filter:drop-shadow(0 0 15px #ed172a55);
-}
-.cat{
-  width:86px;height:69px;background:#080808;position:relative;
-  border:2px solid #e6e0e0;
-  clip-path:polygon(0 20%,20% 0,34% 18%,66% 18%,80% 0,100% 20%,94% 78%,78% 100%,22% 100%,6% 78%);
-}
-.cat:before,.cat:after{
-  content:"";position:absolute;top:34px;width:20px;height:9px;
-  background:var(--red);box-shadow:0 0 12px var(--red);
-  clip-path:polygon(0 0,100% 35%,75% 100%,15% 70%);
-}
-.cat:before{left:14px}
-.cat:after{right:14px;transform:scaleX(-1)}
-.crown{
-  position:absolute;top:-3px;z-index:2;color:var(--white);
-  font-size:40px;text-shadow:2px 2px var(--red);
-}
-.eyebrow{
-  display:inline-block;border:1px solid #72232c;color:#ff4856;
-  padding:8px 12px;font-size:10px;letter-spacing:2px;
-  text-transform:uppercase;background:#16080a;
-}
-h1{
-  margin:19px 0 8px;font-size:clamp(44px,9vw,86px);
-  line-height:.88;letter-spacing:-4px;font-weight:1000;
-  text-transform:uppercase;text-shadow:3px 3px 0 #521018;
-}
-h1 span{
-  display:block;color:var(--red);font-style:italic;
-  text-shadow:3px 3px 0 #47060d;
-}
-.hero p{
-  max-width:510px;margin:21px auto;color:#c0baba;
-  line-height:1.7;font-size:14px;
-}
-.hero-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-.primary,.secondary{
-  display:inline-block;text-decoration:none;padding:13px 18px;
-  font-weight:900;text-transform:uppercase;font-size:12px;
-  letter-spacing:1px;border:1px solid var(--red);
-}
-.primary{background:var(--red);color:white}
-.secondary{background:#080808;color:white;border-color:#5b5151}
-.ticker{
-  border-bottom:1px solid #352427;background:#0d090a;
-  padding:12px 0;overflow:hidden;white-space:nowrap;
-  color:#ddd;font-size:10px;font-weight:bold;letter-spacing:3px;
-}
-.ticker span{color:var(--red);padding:0 18px}
-main{max-width:1200px;margin:auto;padding:36px 5% 70px}
-.section-heading{
-  display:flex;align-items:end;justify-content:space-between;
-  gap:15px;margin-bottom:24px;flex-wrap:wrap;
-}
-.kicker{color:var(--red);font-size:10px;letter-spacing:3px;font-weight:bold}
-h2.section-title{
-  margin:7px 0 0;font-size:clamp(26px,5vw,40px);
-  letter-spacing:-1.5px;text-transform:uppercase;
-}
-.section-title span{color:var(--red)}
-#search{
-  width:100%;max-width:340px;background:#0d0d0d;color:white;
-  border:1px solid #44383a;padding:13px 14px;outline:none;
-}
-#search:focus{border-color:var(--red)}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
-.filter{
-  background:#0d0d0d;color:#c9c3c3;border:1px solid #393232;
-  padding:10px 13px;font-size:11px;text-transform:uppercase;
-  letter-spacing:.6px;
-}
-.filter.active,.filter:hover{
-  color:white;background:#391016;border-color:var(--red);
-}
-.grid{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;
-}
-.product{
-  position:relative;overflow:hidden;min-width:0;
-  padding:21px;background:
-    linear-gradient(135deg,#171515,#090909 65%);
-  border:1px solid #393333;box-shadow:4px 4px 0 #21090c;
-  transition:transform .2s,border-color .2s;
-}
-.product:before{
-  content:"";position:absolute;top:0;left:0;width:48px;height:3px;
-  background:var(--red);
-}
-.product:after{
-  content:"";position:absolute;right:-25px;top:-35px;width:90px;height:90px;
-  border:1px solid #35151a;transform:rotate(35deg);pointer-events:none;
-}
-.product:hover{transform:translateY(-4px);border-color:var(--red)}
-.product-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.symbol{
-  display:grid;place-items:center;width:45px;height:45px;
-  border:1px solid #67202a;background:#23090d;color:#ff3344;
-  font-size:22px;font-weight:900;
-}
-.category{font-size:9px;color:#ff5662;letter-spacing:1.5px;text-transform:uppercase}
-.product h3{font-size:19px;margin:20px 0 9px}
-.product p{color:var(--muted);font-size:12px;line-height:1.6;min-height:20px}
-.buyrow{
-  border-top:1px solid #33292b;margin-top:18px;padding-top:16px;
-  display:flex;justify-content:space-between;align-items:center;gap:8px;
-}
-.price{font-size:17px;font-weight:900;overflow-wrap:anywhere}
-.buy{
-  background:var(--red);color:white;border:1px solid var(--red);
-  padding:11px 12px;font-size:10px;font-weight:900;
-  text-transform:uppercase;letter-spacing:.7px;
-}
-.buy:hover{background:#bd1020}
-.empty{display:none;text-align:center;padding:35px;color:var(--muted)}
-.trust{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:35px;
-}
-.trust article{border:1px solid #30292a;background:#0c0c0c;padding:18px}
-.trust b{display:block;font-size:12px;margin-bottom:7px;text-transform:uppercase}
-.trust p{margin:0;color:var(--muted);font-size:11px;line-height:1.6}
-footer{
-  border-top:1px solid #33292b;padding:28px 6%;
-  text-align:center;color:#aaa;font-size:11px;line-height:2;
-  background:#080808;
-}
-footer strong{color:white;font-size:15px}
-footer span{color:var(--red)}
-.modal{
-  display:none;position:fixed;inset:0;background:#000e;z-index:10;
-  padding:20px;overflow:auto;
-}
-.dialog{
-  max-width:440px;margin:8vh auto;padding:24px;
-  border:1px solid #7a222c;background:#0d0c0c;
-  box-shadow:0 0 40px #ed172a22;
-}
-.dialog h2{margin-top:24px}
-.dialog p{font-size:13px;line-height:1.7;color:#bbb}
-.coin{
-  display:block;margin-top:12px;padding:14px;text-align:center;
-  text-decoration:none;background:#21090d;border:1px solid #79202b;
-  color:white;font-weight:bold;
-}
-.close{float:right;background:#292323;color:white;border:1px solid #514747;padding:9px}
-.note{font-size:11px!important;color:#aaa!important;overflow-wrap:anywhere}
-@media(max-width:800px){
-  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media(max-width:520px){
-  header{padding:15px 5%}
-  .logo{font-size:17px}
-  .header-tag{font-size:8px;letter-spacing:1px;padding:8px}
-  .hero{padding:35px 5%}
-  h1{letter-spacing:-2px}
-  main{padding:29px 5% 48px}
-  .section-heading{align-items:stretch}
-  #search{max-width:none}
-  .grid{grid-template-columns:1fr;gap:13px}
-  .product{padding:19px}
-  .trust{grid-template-columns:1fr}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}
-}
+@media(max-width:360px){.grid{grid-template-columns:1fr}.categories{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 </head>
 <body>
-
 <header>
-  <div class="logo">SUSAIM <span>| MARKET</span></div>
-  <div class="header-tag">✦ DIGITAL GOODS ✦</div>
+  <div class="brand">♛ SUSAIM<span>MARKET</span></div>
+  <nav><a href="#">Home</a><a href="#shop">Shop</a><a href="#footer">About</a><a href="#footer">Contact</a></nav>
+  <input class="searchtop" id="topSearch" placeholder="⌕ Search products..." aria-label="Search products">
+  <div class="topicons"><span>🎮</span><span>♫</span><span>♟</span></div>
 </header>
 
 <section class="hero">
-  <div class="mascot" aria-label="Stylized crowned black cat mascot">
-    <div class="crown">♛</div>
-    <div class="cat"></div>
+  <div class="scratches s1">✳</div><div class="scratches s2">✦</div>
+  <div class="hero-copy">
+    <h1>SUSAIM<span>MARKET</span></h1>
+    <div class="tagline"><b>✕</b> CHEAP SUBSCRIPTIONS <b>✕</b> DIGITAL GOODS <b>✕</b> GAMING DEALS</div>
   </div>
-  <div class="eyebrow">✦ The underground digital marketplace ✦</div>
-  <h1>SUSAIM <span>MARKET</span></h1>
-  <p>Gaming-inspired design. Digital deals. Browse the catalogue and find what you're looking for.</p>
-  <div class="hero-actions">
-    <a class="primary" href="#catalogue">Explore products ↘</a>
-    <a class="secondary" href="#about">About the market</a>
+  <div class="hero-cat"><div class="crown">♛</div><div class="cathead"></div></div>
+</section>
+
+<section class="categories" id="categories">
+  <button class="category active" data-cat="All"><span class="ico">♛</span>All</button>
+  <button class="category" data-cat="Streaming"><span class="ico">▶</span>Streaming</button>
+  <button class="category" data-cat="Music"><span class="ico">♫</span>Music</button>
+  <button class="category" data-cat="Gaming"><span class="ico">🎮</span>Gaming</button>
+  <button class="category" data-cat="Software"><span class="ico">▦</span>Software</button>
+  <button class="category" data-cat="Security"><span class="ico">⬟</span>Security</button>
+  <button class="category" data-cat="Tools"><span class="ico">⚒</span>Tools</button>
+</section>
+
+<section class="shop" id="shop">
+  <aside class="sidebar">
+    <h2>CATEGORIES ♛</h2>
+    <div class="sideitems">
+      <button class="sidebtn active" data-cat="All"><span>▦</span>All Products</button>
+      <button class="sidebtn" data-cat="Streaming"><span>▶</span>Streaming</button>
+      <button class="sidebtn" data-cat="Music"><span>♫</span>Music</button>
+      <button class="sidebtn" data-cat="Gaming"><span>🎮</span>Gaming</button>
+      <button class="sidebtn" data-cat="Security"><span>⬟</span>Security</button>
+      <button class="sidebtn" data-cat="Tools"><span>⚒</span>Tools</button>
+    </div>
+    <div class="sidenote">REAL DEALS<br><span>REAL PEOPLE</span><br>✦ ✦ ✦</div>
+  </aside>
+  <div>
+    <div class="shopheading"><h2>FEATURED <span>PRODUCTS</span> ♛</h2></div>
+    <div class="searchrow">
+      <input id="search" placeholder="⌕ Search products..." aria-label="Search products">
+      <select id="sort" aria-label="Sort products"><option value="featured">Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option></select>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p id="empty" style="display:none;text-align:center;color:#aaa;padding:25px">No products found.</p>
   </div>
 </section>
 
-<div class="ticker">
-  <span>✦</span> SUSAIM MARKET <span>✦</span> GAMING CULTURE
-  <span>✦</span> DARK MODE ALWAYS <span>✦</span> DIGITAL GOODS
-  <span>✦</span> SUSAIM MARKET <span>✦</span>
-</div>
-
-<main id="catalogue">
-  <div class="section-heading">
-    <div>
-      <div class="kicker">// THE CATALOGUE</div>
-      <h2 class="section-title">FIND YOUR <span>DEAL.</span></h2>
-    </div>
-    <input id="search" type="search" placeholder="⌕ Search products..." aria-label="Search products">
-  </div>
-
-  <div class="filters">
-    <button class="filter active" data-category="All">All products</button>
-    <button class="filter" data-category="Streaming">Streaming</button>
-    <button class="filter" data-category="Music">Music</button>
-    <button class="filter" data-category="Security">Security</button>
-    <button class="filter" data-category="Tools">Tools</button>
-  </div>
-
-  <div class="grid" id="products"></div>
-  <div class="empty" id="empty">NO MATCHES FOUND. TRY ANOTHER SEARCH.</div>
-
-  <section class="trust" id="about">
-    <article><b>✦ Clear listings</b><p>Review each product description and price before ordering.</p></article>
-    <article><b>♛ Contact first</b><p>Confirm availability, delivery details, and payment instructions before sending money.</p></article>
-    <article><b>✦ Authorized products</b><p>Only buy or sell products you are permitted to distribute.</p></article>
-  </section>
-</main>
-
-<footer>
-  <strong>SUSAIM <span>| MARKET</span></strong><br>
-  A gaming-inspired digital storefront.<br>
-  Payment options are not connected until a verified checkout is configured.<br>
-  © <span id="year"></span> SusAim Market
+<footer id="footer">
+  <div class="brand">♛ SUSAIM<span>MARKET</span></div>
+  <div>⬟ <b>SAFETY FIRST</b></div>
+  <div>ϟ <b>DELIVERY DETAILS</b></div>
+  <div>☏ <b>SUPPORT</b></div>
+  <div>PAYMENT OPTIONS: <span>BTC</span> / <span>LTC</span></div>
 </footer>
 
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="checkoutName">
-  <div class="dialog">
-    <button class="close" onclick="closeCheckout()">CLOSE ✕</button>
-    <div class="kicker">// CHECKOUT PREVIEW</div>
-    <h2 id="checkoutName">Product</h2>
-    <p id="checkoutPrice"></p>
-    <p class="note">This is a checkout demo. The buttons below do not send payment, calculate crypto amounts, or verify transactions. Do not send funds using this demo.</p>
-    <a class="coin" id="btc" href="https://www.blockchain.com/explorer/assets/btc" target="_blank" rel="noopener">₿ Bitcoin explorer</a>
-    <a class="coin" id="ltc" href="https://blockchair.com/litecoin" target="_blank" rel="noopener">Ł Litecoin explorer</a>
-    <p class="note">Actual checkout must be connected and tested before accepting orders.</p>
-    <button class="buy" onclick="closeCheckout()">Back to catalogue</button>
-  </div>
+<div class="modal" id="modal">
+ <div class="modalbox">
+  <button class="close" onclick="closeModal()">CLOSE ✕</button>
+  <h2 id="modalTitle">Product</h2>
+  <p id="modalDesc"></p>
+  <p><b>Checkout preview only.</b> Payment has not been connected. These links do not accept or verify payments; do not send funds through this demo.</p>
+  <a href="https://www.blockchain.com/explorer/assets/btc" target="_blank" rel="noopener">₿ Bitcoin Explorer</a>
+  <a href="https://blockchair.com/litecoin" target="_blank" rel="noopener">Ł Litecoin Explorer</a>
+ </div>
 </div>
 
 <script>
-const products = [
-  {id:"spotify",name:"Spotify Premium",detail:"12 Months · Full Access",price:"€1.00",category:"Music",symbol:"♫"},
-  {id:"crunchyroll",name:"Crunchyroll",detail:"1 Month · Full Access",price:"$0.05",category:"Streaming",symbol:"▶"},
-  {id:"nordvpn",name:"NordVPN",detail:"Lifetime",price:"€0.99",category:"Security",symbol:"◈"},
-  {id:"prime",name:"Prime Video",detail:"1 Month · Full Access",price:"€1.29",category:"Streaming",symbol:"▶"},
-  {id:"canva",name:"Canva Pro",detail:"1 Month · Full Access",price:"€0.59",category:"Tools",symbol:"✦"},
-  {id:"expressvpn",name:"ExpressVPN",detail:"Lifetime",price:"€0.59",category:"Security",symbol:"◈"}
+const products=[
+ {name:"Spotify Premium",category:"Music",desc:"12 Months · Full Access",price:1,currency:"€",icon:"♫",cls:"spotify"},
+ {name:"Crunchyroll",category:"Streaming",desc:"1 Month · Full Access",price:.05,currency:"$",icon:"◉",cls:"crunchy"},
+ {name:"NordVPN",category:"Security",desc:"Lifetime",price:.99,currency:"€",icon:"▲",cls:"nord"},
+ {name:"Prime Video",category:"Streaming",desc:"1 Month · Full Access",price:1.29,currency:"€",icon:"prime video",cls:"prime"},
+ {name:"Canva Pro",category:"Tools",desc:"1 Month · Full Access",price:.59,currency:"€",icon:"C",cls:""},
+ {name:"ExpressVPN",category:"Security",desc:"Lifetime",price:.59,currency:"€",icon:"ϟ",cls:""},
+ {name:"Discord Nitro",category:"Gaming",desc:"Digital product · See details",price:.79,currency:"€",icon:"♟",cls:""},
+ {name:"Netflix",category:"Streaming",desc:"Digital product · See details",price:1.29,currency:"€",icon:"N",cls:""}
 ];
-
-let activeCategory = "All";
-const grid = document.getElementById("products");
-const search = document.getElementById("search");
-
-function renderProducts(){
-  const query = search.value.trim().toLowerCase();
-  const filtered = products.filter(product =>
-    (activeCategory === "All" || product.category === activeCategory) &&
-    (product.name + " " + product.detail + " " + product.category)
-      .toLowerCase().includes(query)
-  );
-
-  grid.innerHTML = filtered.map(product => `
-    <article class="product">
-      <div class="product-top">
-        <div class="symbol">${product.symbol}</div>
-        <div class="category">${product.category}</div>
-      </div>
-      <h3>${product.name}</h3>
-      <p>${product.detail}</p>
-      <div class="buyrow">
-        <div class="price">${product.price}</div>
-        <button class="buy" onclick="checkout('${product.id}')">Details ↗</button>
-      </div>
-    </article>
-  `).join("");
-
-  document.getElementById("empty").style.display =
-    filtered.length ? "none" : "block";
+let category="All";
+const grid=document.getElementById("grid");
+const search=document.getElementById("search");
+const topSearch=document.getElementById("topSearch");
+function render(){
+ let q=(search.value||topSearch.value).trim().toLowerCase();
+ let list=products.filter(p=>(category==="All"||p.category===category)&&(p.name+" "+p.category+" "+p.desc).toLowerCase().includes(q));
+ if(document.getElementById("sort").value==="low")list.sort((a,b)=>a.price-b.price);
+ if(document.getElementById("sort").value==="high")list.sort((a,b)=>b.price-a.price);
+ grid.innerHTML=list.map(p=>`<article class="card">
+ <div class="badge">${p.category}</div>
+ <div class="producticon ${p.cls}">${p.icon}</div>
+ <h3>${p.name}</h3><div class="desc">${p.desc}</div>
+ <div class="price">${p.currency}${p.price.toFixed(2)}</div>
+ <button class="buy" data-product="${p.name}">BUY NOW　→</button>
+ </article>`).join("");
+ document.getElementById("empty").style.display=list.length?"none":"block";
 }
-
-function checkout(id){
-  const product = products.find(item => item.id === id);
-  if(!product) return;
-  document.getElementById("checkoutName").textContent = product.name;
-  document.getElementById("checkoutPrice").textContent =
-    product.detail + " · Listed price: " + product.price;
-  document.getElementById("modal").style.display = "block";
+function setCategory(c){
+ category=c;
+ document.querySelectorAll("[data-cat]").forEach(b=>b.classList.toggle("active",b.dataset.cat===c));
+ render();
 }
-
-function closeCheckout(){
-  document.getElementById("modal").style.display = "none";
-}
-
-search.addEventListener("input", renderProducts);
-
-document.querySelectorAll(".filter").forEach(button => {
-  button.addEventListener("click", () => {
-    activeCategory = button.dataset.category;
-    document.querySelectorAll(".filter").forEach(item => {
-      item.classList.toggle("active", item === button);
-    });
-    renderProducts();
-  });
+document.querySelectorAll("[data-cat]").forEach(b=>b.addEventListener("click",()=>setCategory(b.dataset.cat)));
+search.addEventListener("input",()=>{topSearch.value=search.value;render()});
+topSearch.addEventListener("input",()=>{search.value=topSearch.value;render()});
+document.getElementById("sort").addEventListener("change",render);
+grid.addEventListener("click",e=>{
+ const b=e.target.closest("[data-product]");if(!b)return;
+ const p=products.find(x=>x.name===b.dataset.product);if(!p)return;
+ document.getElementById("modalTitle").textContent=p.name;
+ document.getElementById("modalDesc").textContent=p.desc+" · Listed price: "+p.currency+p.price.toFixed(2);
+ document.getElementById("modal").style.display="block";
 });
-
-document.getElementById("modal").addEventListener("click", event => {
-  if(event.target.id === "modal") closeCheckout();
-});
-
-document.addEventListener("keydown", event => {
-  if(event.key === "Escape") closeCheckout();
-});
-
-document.getElementById("year").textContent = new Date().getFullYear();
-renderProducts();
+function closeModal(){document.getElementById("modal").style.display="none"}
+document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeModal()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+render();
 </script>
 </body>
-  </html>
-  
+                                                                           </html>
+                                                                           
