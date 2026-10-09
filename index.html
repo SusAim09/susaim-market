@@ -3,231 +3,380 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#050505">
-<title>SUSAIM MARKET | Digital Deals</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080808">
+<title>SusAim Market | Digital Deals</title>
 <style>
-:root{--red:#f0182b;--white:#f3eeee;--bg:#050505;--panel:#0b0b0b;--muted:#aaa}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
-button,input{font:inherit}
-button{cursor:pointer}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:
-radial-gradient(ellipse at 10% 10%,#3a090d 0,transparent 28%),
-radial-gradient(ellipse at 90% 65%,#240609 0,transparent 30%),
-repeating-linear-gradient(132deg,transparent 0 90px,#40101544 91px,transparent 93px 170px),
-repeating-linear-gradient(25deg,transparent 0 140px,#eee1e111 141px,transparent 143px 210px),#050505}
-body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:5;opacity:.14;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
-header{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:15px 4%;border-bottom:2px solid #7774;background:#050505}
-.brand{font-weight:1000;font-size:24px;font-style:italic;line-height:.85;letter-spacing:-1.6px;transform:skew(-7deg)}
-.brand span{display:block;color:var(--red);font-size:17px;text-align:right}
-nav{display:flex;gap:25px;align-items:center}
-nav a{color:#ddd;text-decoration:none;font-weight:900;font-size:13px;font-style:italic;text-transform:uppercase}
-nav a:first-child,nav a:hover{color:var(--red)}
-.searchtop{width:220px;background:#080808;color:white;border:1px solid #aaa;padding:11px}
-.topicons{font-size:19px;white-space:nowrap}
-.topicons span{padding:0 5px}
-.hero{position:relative;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;min-height:300px;padding:25px 5%;gap:20px;overflow:hidden;border-bottom:3px solid #eee8}
-.hero:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(150deg,transparent 0 60px,#f0182b30 61px 64px,transparent 65px 110px);pointer-events:none}
-.hero-copy,.hero-cat{position:relative;z-index:1}
-.hero h1{margin:0;font-size:clamp(47px,8vw,95px);font-weight:1000;line-height:.78;letter-spacing:-5px;font-style:italic;text-shadow:4px 4px 0 #6d0711;transform:skew(-5deg)}
-.hero h1 span{display:block;color:var(--red);margin:12px 0 0 15%;font-size:.8em}
-.tagline{font-size:12px;font-style:italic;letter-spacing:1px;margin-top:28px}
-.tagline b{color:var(--red);padding:0 4px}
-.hero-cat{height:230px;display:grid;place-items:center}
-.cathead{width:200px;height:165px;position:relative;background:linear-gradient(145deg,#1b1b1b,#020202 65%);border:3px solid #e8e5e5;clip-path:polygon(0 23%,22% 0,35% 22%,65% 22%,78% 0,100% 23%,93% 78%,75% 100%,25% 100%,7% 78%);filter:drop-shadow(0 0 18px #f0182b55)}
-.cathead:before,.cathead:after{content:"";position:absolute;top:78px;width:42px;height:19px;background:#ff152b;box-shadow:0 0 20px #f0182b;clip-path:polygon(0 0,100% 25%,68% 100%,10% 75%)}
-.cathead:before{left:36px}.cathead:after{right:36px;transform:scaleX(-1)}
-.crown{position:absolute;top:0;font-size:63px;color:#eee;z-index:2;text-shadow:3px 3px var(--red)}
-.scratches{position:absolute;color:var(--red);font-size:40px;transform:rotate(-20deg);font-weight:1000}
-.s1{left:4%;top:15%}.s2{right:4%;bottom:12%}
-.categories{display:grid;grid-template-columns:repeat(7,minmax(70px,1fr));gap:10px;padding:15px 4%;border-bottom:2px solid #e4e0e0;background:#080808}
-.category{min-height:72px;border:1px solid #777;background:#0a0a0a;color:white;text-transform:uppercase;font-size:11px;font-weight:900;font-style:italic;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;clip-path:polygon(5% 0,100% 0,95% 100%,0 100%)}
-.category .ico{font-size:23px}
-.category.active,.category:hover{background:var(--red);border-color:var(--red)}
-.shop{display:grid;grid-template-columns:195px 1fr;gap:23px;padding:22px 4% 40px;max-width:1500px;margin:auto}
-.sidebar{border-right:1px solid #7775;padding-right:16px}
-.sidebar h2{font-size:23px;font-style:italic;margin:0 0 16px}
-.sidebtn{display:flex;gap:12px;align-items:center;width:100%;padding:12px 10px;border:0;background:transparent;color:#ddd;text-align:left;font-size:13px}
-.sidebtn:hover,.sidebtn.active{background:var(--red);color:white}
-.sidebtn span{font-size:18px}
-.sidenote{margin-top:35px;color:#aaa;font-weight:1000;font-style:italic;font-size:21px;line-height:1.2;transform:rotate(-5deg)}
-.sidenote span{color:var(--red)}
-.shopheading{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:18px}
-.shopheading h2{font-size:clamp(23px,4vw,34px);font-style:italic;text-transform:uppercase;margin:0}
-.shopheading h2 span{color:var(--red)}
-.searchrow{display:flex;gap:10px;margin-bottom:18px}
-.searchrow input,.searchrow select{min-width:0;background:#070707;color:#eee;border:1px solid #888;padding:12px;width:100%}
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
-.card{position:relative;min-width:0;background:linear-gradient(145deg,#151515,#050505);border:1px solid #d2cccc;padding:14px 13px 16px;box-shadow:inset 0 0 0 3px #181818,4px 4px 0 #31070c;overflow:hidden}
-.card:before{content:"";position:absolute;left:0;top:0;width:48px;height:3px;background:var(--red)}
-.card:after{content:"✦";position:absolute;right:8px;top:4px;color:#ddd;font-size:19px}
-.card:hover{border-color:var(--red);transform:translateY(-3px)}
-.badge{position:absolute;top:12px;left:10px;color:var(--red);font-weight:1000;font-size:10px;font-style:italic;text-transform:uppercase}
-.producticon{height:103px;display:grid;place-items:center;font-size:58px;font-weight:1000;color:#eee;text-shadow:2px 2px #555}
-.producticon.spotify{color:#d9d9d9}.producticon.crunchy{color:#f26b30}.producticon.nord{color:#dedede}.producticon.prime{font-size:24px}
-.card h3{font-size:14px;font-style:italic;text-transform:uppercase;margin:6px 0 9px}
-.desc{font-size:11px;line-height:1.6;color:#ddd;min-height:32px}
-.price{font-size:22px;font-weight:1000;font-style:italic;color:var(--red);margin:9px 0 12px}
-.buy{display:block;width:100%;border:0;background:var(--red);color:white;padding:11px 6px;font-size:11px;font-weight:1000;font-style:italic;text-transform:uppercase;clip-path:polygon(4% 0,100% 0,96% 100%,0 100%)}
-.buy:hover{background:#fff;color:#111}
-footer{display:flex;justify-content:space-around;align-items:center;gap:15px;flex-wrap:wrap;padding:20px 4%;border-top:3px solid #eee;background:#080808;color:#ddd;font-size:12px}
-footer b{font-size:13px}footer span{color:var(--red)}
-.modal{display:none;position:fixed;inset:0;z-index:20;background:#000e;padding:20px}
-.modalbox{max-width:400px;margin:12vh auto;background:#101010;border:1px solid var(--red);padding:25px}
-.modalbox h2{font-style:italic}.modalbox p{color:#bbb;font-size:13px;line-height:1.6}
-.close{float:right;background:#222;color:white;border:1px solid #777;padding:8px}
-.modalbox a{display:block;text-decoration:none;text-align:center;margin-top:10px;padding:12px;background:#27080d;border:1px solid var(--red);font-weight:bold}
-@media(max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.categories{grid-template-columns:repeat(4,minmax(0,1fr))}.searchtop{width:170px}}
-@media(max-width:650px){
- header{flex-wrap:wrap;padding:13px 4%;gap:13px}
- .brand{font-size:21px}nav{order:3;width:100%;justify-content:space-between;gap:8px}
- nav a{font-size:11px}.searchtop{flex:1;min-width:100px;width:auto}
- .hero{grid-template-columns:1fr;padding:35px 5% 22px;text-align:center}
- .hero h1{font-size:clamp(50px,14vw,78px);letter-spacing:-3px}
- .hero h1 span{margin-left:0}.hero-cat{height:160px;grid-row:1}
- .cathead{width:145px;height:120px}.cathead:before,.cathead:after{top:57px;width:31px}
- .cathead:before{left:25px}.cathead:after{right:25px}
- .crown{font-size:48px}.tagline{font-size:10px}
- .categories{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding:12px 3%}
- .category{min-height:65px;font-size:9px}
- .shop{grid-template-columns:1fr;padding:18px 4% 30px;gap:18px}
- .sidebar{border-right:0;border-bottom:1px solid #7775;padding:0 0 12px}
- .sidebar h2{font-size:20px;margin-bottom:8px}
- .sideitems{display:flex;flex-wrap:wrap;gap:5px}
- .sidebtn{width:auto;padding:9px;font-size:11px}
- .sidenote{display:none}
- .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
- .card{padding:12px 10px}
- .producticon{height:80px;font-size:44px}
- .card h3{font-size:12px}.price{font-size:19px}
- .desc{font-size:10px}
- footer{justify-content:center;text-align:center}
+:root {
+  --bg:#080808;
+  --panel:#111111;
+  --red:#f01835;
+  --white:#f5f2f0;
+  --muted:#bcb8b8;
+  --line:#595454;
 }
-@media(max-width:360px){.grid{grid-template-columns:1fr}.categories{grid-template-columns:repeat(2,minmax(0,1fr))}}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  color:var(--white);
+  background:
+    linear-gradient(#050505d9,#050505f0),
+    url("background.jpg") center top/cover fixed,
+    #080808;
+  font-family:Arial,Helvetica,sans-serif;
+}
+a { color:inherit; text-decoration:none; }
+button,input { font:inherit; }
+button { cursor:pointer; }
+.wrap { width:min(1400px,96%); margin:auto; }
+header {
+  position:sticky; top:0; z-index:20;
+  background:#080808ed;
+  border-bottom:2px solid #777;
+  backdrop-filter:blur(12px);
+}
+.nav {
+  min-height:76px; display:flex; align-items:center;
+  justify-content:space-between; gap:20px; padding:10px 2%;
+}
+.brand {
+  font-size:23px; font-weight:1000; font-style:italic;
+  letter-spacing:-1.5px; line-height:.9;
+  text-shadow:3px 3px #8b071a;
+}
+.brand span { display:block; color:var(--red); margin-left:18px; }
+.links { display:flex; gap:clamp(12px,3vw,40px); }
+.links a { font-size:13px; font-weight:900; font-style:italic; }
+.links a:first-child { color:var(--red); }
+.top-search {
+  width:min(235px,27vw); padding:12px 14px;
+  border:1px solid #aaa; border-radius:7px;
+  background:#090909; color:white; outline:none;
+}
+.discord {
+  border:1px solid #555; background:#101010;
+  color:white; border-radius:7px; padding:10px 13px;
+}
+.hero {
+  min-height:340px; position:relative; overflow:hidden;
+  display:grid; grid-template-columns:1.1fr .9fr;
+  align-items:center; gap:10px;
+  padding:45px clamp(18px,5vw,72px);
+  border-bottom:2px solid #777;
+  background:
+    linear-gradient(90deg,#050505c9,#05050552,#050505d1),
+    url("background.jpg") center 43%/cover,
+    radial-gradient(ellipse at 75% 50%,#52101a,#080808 65%);
+}
+.hero:before {
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:repeating-linear-gradient(132deg,transparent 0 85px,#ed16351c 87px 90px,transparent 93px 150px);
+}
+.hero-copy,.cat-art { position:relative; z-index:1; }
+.kicker {
+  color:var(--red); font-size:12px; font-weight:900;
+  letter-spacing:4px; margin-bottom:12px;
+}
+.hero h1 {
+  font-size:clamp(43px,7vw,94px); line-height:.82;
+  font-weight:1000; font-style:italic; letter-spacing:-4px;
+  margin:0; text-transform:uppercase;
+  text-shadow:4px 5px #810b1e;
+}
+.hero h1 span { display:block; color:var(--red); margin-top:13px; }
+.hero p {
+  max-width:490px; font-size:12px; line-height:1.9;
+  letter-spacing:2px; font-weight:bold; color:#e6e1e1;
+  margin:22px 0;
+}
+.cta {
+  display:inline-block; padding:13px 24px;
+  background:var(--red); font-weight:1000; font-style:italic;
+  clip-path:polygon(4% 0,100% 0,96% 100%,0 100%);
+  box-shadow:0 4px #850b1d;
+}
+.cat-art { text-align:center; }
+.cat {
+  width:clamp(150px,23vw,270px); aspect-ratio:1;
+  margin:auto; position:relative;
+  background:linear-gradient(145deg,#191919,#020202 70%);
+  clip-path:polygon(8% 21%,24% 0,38% 17%,62% 17%,77% 0,93% 22%,100% 82%,77% 100%,20% 100%,0 80%);
+  filter:drop-shadow(0 0 25px #e7193540);
+}
+.cat:before,.cat:after {
+  content:""; position:absolute; top:45%; width:25%; height:12%;
+  background:var(--red); box-shadow:0 0 16px #f01835;
+}
+.cat:before { left:17%; clip-path:polygon(0 0,100% 25%,80% 100%,10% 65%); }
+.cat:after { right:17%; clip-path:polygon(0 25%,100% 0,90% 65%,20% 100%); }
+.crown { font-size:clamp(32px,5vw,60px); color:#f5f2f0; text-shadow:3px 3px var(--red); }
+.cat-caption { font-weight:1000; font-size:12px; letter-spacing:4px; margin-top:12px; }
+.cat-caption span { color:var(--red); }
+.section { padding:22px 0; }
+.section-title {
+  display:flex; align-items:center; gap:14px;
+  margin:8px 0 17px; font-size:15px; font-weight:1000;
+  font-style:italic; text-transform:uppercase;
+}
+.section-title:after { content:""; height:1px; flex:1; background:#777; }
+.categories {
+  display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:10px;
+}
+.category {
+  min-height:85px; border:1px solid #777; background:#0a0a0ad9;
+  color:white; font-weight:900; font-size:11px;
+  font-style:italic; text-transform:uppercase;
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:center; gap:8px; position:relative;
+  clip-path:polygon(3% 0,100% 0,97% 100%,0 100%);
+}
+.category .ico { font-size:24px; }
+.category.active,.category:hover {
+  background:var(--red); border-color:var(--red);
+}
+.tools {
+  display:flex; gap:12px; align-items:center; margin:20px 0;
+}
+.search {
+  flex:1; min-width:0; padding:14px;
+  background:#080808; color:white;
+  border:1px solid #777; outline:none;
+}
+.sort {
+  max-width:145px; padding:13px 8px;
+  background:#080808; color:white; border:1px solid #777;
+}
+.products {
+  display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:17px;
+}
+.product {
+  min-width:0; position:relative; padding:15px;
+  background:
+    linear-gradient(145deg,#171717ef,#050505f5),
+    url("background.jpg") center/cover;
+  border:1px solid #7d7777;
+  box-shadow:inset 0 0 0 3px #080808, inset 0 0 0 4px #393333;
+  transition:transform .2s,border-color .2s;
+}
+.product:before {
+  content:""; position:absolute; inset:5px;
+  border:1px dashed #8e7777; pointer-events:none;
+}
+.product:hover { transform:translateY(-4px); border-color:var(--red); }
+.tag {
+  color:var(--red); font-size:10px; font-weight:1000;
+  font-style:italic; text-transform:uppercase; letter-spacing:1px;
+}
+.product-image {
+  height:100px; display:flex; align-items:center;
+  justify-content:center; font-size:53px;
+  margin:10px 0; text-shadow:0 0 20px #ffffff24;
+}
+.product h3 {
+  position:relative; font-size:15px; margin:10px 0 8px;
+  font-weight:1000; font-style:italic; text-transform:uppercase;
+}
+.product p { position:relative; color:#d0cccc; font-size:12px; line-height:1.6; min-height:38px; margin:0; }
+.price { color:var(--red); font-size:22px; font-weight:1000; margin:12px 0; }
+.buy {
+  width:100%; border:0; padding:12px 6px;
+  color:white; background:var(--red);
+  font-weight:1000; font-style:italic;
+  clip-path:polygon(4% 0,100% 0,96% 100%,0 100%);
+}
+.buy:hover { background:#ff314c; }
+.empty { color:#bbb; padding:30px 0; }
+footer {
+  margin-top:28px; border-top:2px solid #777;
+  background:#080808ed;
+}
+.footer-row {
+  min-height:85px; display:flex; align-items:center;
+  justify-content:space-between; flex-wrap:wrap; gap:15px;
+  padding:18px 0;
+}
+.trust { font-size:11px; font-weight:bold; color:#e6e1e1; }
+.payments { display:flex; gap:18px; font-weight:900; }
+.payments span { color:#ddd; white-space:nowrap; }
+.fine { border-top:1px solid #383838; padding:13px 0; color:#aaa; font-size:11px; }
+@media(max-width:800px) {
+  .nav { flex-wrap:wrap; gap:12px; }
+  .brand { font-size:21px; }
+  .links { order:3; width:100%; justify-content:space-between; }
+  .top-search { width:150px; }
+  .hero { grid-template-columns:1fr .65fr; padding:35px 18px; min-height:290px; }
+  .hero h1 { letter-spacing:-2px; }
+  .hero p { font-size:10px; letter-spacing:1px; }
+  .categories { grid-template-columns:repeat(4,minmax(0,1fr)); }
+  .products { grid-template-columns:repeat(2,minmax(0,1fr)); gap:11px; }
+  .product { padding:11px; }
+}
+@media(max-width:420px) {
+  .hero { grid-template-columns:1fr; text-align:center; }
+  .hero-copy { order:2; }
+  .cat-art { order:1; }
+  .cat { width:135px; }
+  .hero h1 { font-size:48px; }
+  .hero p { margin:16px auto; }
+  .top-search { width:130px; }
+  .category { min-height:72px; font-size:10px; }
+  .product-image { height:75px; font-size:42px; }
+  .product h3 { font-size:13px; }
+  .product p { font-size:11px; }
+  .price { font-size:19px; }
+  .tools { flex-wrap:wrap; }
+  .sort { flex:1; max-width:none; }
+}
 </style>
 </head>
 <body>
 <header>
-  <div class="brand">♛ SUSAIM<span>MARKET</span></div>
-  <nav><a href="#">Home</a><a href="#shop">Shop</a><a href="#footer">About</a><a href="#footer">Contact</a></nav>
-  <input class="searchtop" id="topSearch" placeholder="⌕ Search products..." aria-label="Search products">
-  <div class="topicons"><span>🎮</span><span>♫</span><span>♟</span></div>
+  <div class="nav wrap">
+    <a class="brand" href="#home">SUSAIM<span>MARKET</span></a>
+    <nav class="links">
+      <a href="#home">HOME</a>
+      <a href="#shop">SHOP</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+    <input class="top-search" id="topSearch" placeholder="⌕ Search products..." aria-label="Search products">
+    <a class="discord" href="#contact" aria-label="Contact">✉</a>
+  </div>
 </header>
 
-<section class="hero">
-  <div class="scratches s1">✳</div><div class="scratches s2">✦</div>
+<main>
+<section class="hero" id="home">
   <div class="hero-copy">
+    <div class="kicker">✦ THE UNDERGROUND MARKET ✦</div>
     <h1>SUSAIM<span>MARKET</span></h1>
-    <div class="tagline"><b>✕</b> CHEAP SUBSCRIPTIONS <b>✕</b> DIGITAL GOODS <b>✕</b> GAMING DEALS</div>
+    <p>✕ CHEAP SUBSCRIPTIONS &nbsp; ✕ DIGITAL GOODS &nbsp; ✕ INSTANT DELIVERY</p>
+    <a class="cta" href="#shop">EXPLORE THE DEALS →</a>
   </div>
-  <div class="hero-cat"><div class="crown">♛</div><div class="cathead"></div></div>
-</section>
-
-<section class="categories" id="categories">
-  <button class="category active" data-cat="All"><span class="ico">♛</span>All</button>
-  <button class="category" data-cat="Streaming"><span class="ico">▶</span>Streaming</button>
-  <button class="category" data-cat="Music"><span class="ico">♫</span>Music</button>
-  <button class="category" data-cat="Gaming"><span class="ico">🎮</span>Gaming</button>
-  <button class="category" data-cat="Software"><span class="ico">▦</span>Software</button>
-  <button class="category" data-cat="Security"><span class="ico">⬟</span>Security</button>
-  <button class="category" data-cat="Tools"><span class="ico">⚒</span>Tools</button>
-</section>
-
-<section class="shop" id="shop">
-  <aside class="sidebar">
-    <h2>CATEGORIES ♛</h2>
-    <div class="sideitems">
-      <button class="sidebtn active" data-cat="All"><span>▦</span>All Products</button>
-      <button class="sidebtn" data-cat="Streaming"><span>▶</span>Streaming</button>
-      <button class="sidebtn" data-cat="Music"><span>♫</span>Music</button>
-      <button class="sidebtn" data-cat="Gaming"><span>🎮</span>Gaming</button>
-      <button class="sidebtn" data-cat="Security"><span>⬟</span>Security</button>
-      <button class="sidebtn" data-cat="Tools"><span>⚒</span>Tools</button>
-    </div>
-    <div class="sidenote">REAL DEALS<br><span>REAL PEOPLE</span><br>✦ ✦ ✦</div>
-  </aside>
-  <div>
-    <div class="shopheading"><h2>FEATURED <span>PRODUCTS</span> ♛</h2></div>
-    <div class="searchrow">
-      <input id="search" placeholder="⌕ Search products..." aria-label="Search products">
-      <select id="sort" aria-label="Sort products"><option value="featured">Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option></select>
-    </div>
-    <div class="grid" id="grid"></div>
-    <p id="empty" style="display:none;text-align:center;color:#aaa;padding:25px">No products found.</p>
+  <div class="cat-art">
+    <div class="crown">♛</div>
+    <div class="cat"></div>
+    <div class="cat-caption">DARK LOOK. <span>SHARP DEALS.</span></div>
   </div>
 </section>
 
-<footer id="footer">
-  <div class="brand">♛ SUSAIM<span>MARKET</span></div>
-  <div>⬟ <b>SAFETY FIRST</b></div>
-  <div>ϟ <b>DELIVERY DETAILS</b></div>
-  <div>☏ <b>SUPPORT</b></div>
-  <div>PAYMENT OPTIONS: <span>BTC</span> / <span>LTC</span></div>
+<section class="section wrap">
+  <div class="section-title">✦ SELECT YOUR CATEGORY</div>
+  <div class="categories" id="categories">
+    <button class="category active" data-category="all"><span class="ico">♛</span>All</button>
+    <button class="category" data-category="streaming"><span class="ico">▶</span>Streaming</button>
+    <button class="category" data-category="music"><span class="ico">♫</span>Music</button>
+    <button class="category" data-category="gaming"><span class="ico">🎮</span>Gaming</button>
+    <button class="category" data-category="software"><span class="ico">▦</span>Software</button>
+    <button class="category" data-category="security"><span class="ico">⬟</span>Security</button>
+    <button class="category" data-category="tools"><span class="ico">⚒</span>Tools</button>
+  </div>
+</section>
+
+<section class="section wrap" id="shop">
+  <div class="section-title">✦ REAL DEALS. CLEAN DESIGN.</div>
+  <div class="tools">
+    <input class="search" id="search" placeholder="⌕  Search products..." aria-label="Search products">
+    <select class="sort" id="sort" aria-label="Sort products">
+      <option value="featured">Featured</option>
+      <option value="low">Price: low to high</option>
+      <option value="high">Price: high to low</option>
+      <option value="name">Name: A–Z</option>
+    </select>
+  </div>
+  <div class="products" id="products"></div>
+  <p id="empty" class="empty" hidden>No products found. Try another search.</p>
+</section>
+
+<section class="section wrap" id="faq">
+  <div class="section-title">✦ BEFORE YOU ORDER</div>
+  <p style="color:#c7c2c2;font-size:13px;line-height:1.8">
+    Check each product's description, duration, delivery method and terms before purchasing.
+    Only products you are authorized to sell should be listed. Prices and checkout links must be
+    verified before this storefront is used for real orders.
+  </p>
+</section>
+</main>
+
+<footer id="contact">
+  <div class="footer-row wrap">
+    <a class="brand" href="#home">SUSAIM<span>MARKET</span></a>
+    <div class="trust">◇ CLEAR PRODUCT DETAILS</div>
+    <div class="trust">↯ DELIVERY DETAILS SHOWN</div>
+    <div class="trust">☏ SUPPORT</div>
+    <div class="payments"><span>₿ BTC</span><span>Ł LTC</span></div>
+    <a class="cta" href="#shop">SHOP NOW ↗</a>
+  </div>
+  <div class="fine"><div class="wrap">© <span id="year"></span> SusAim Market · Contact support before ordering.</div></div>
 </footer>
 
-<div class="modal" id="modal">
- <div class="modalbox">
-  <button class="close" onclick="closeModal()">CLOSE ✕</button>
-  <h2 id="modalTitle">Product</h2>
-  <p id="modalDesc"></p>
-  <p><b>Checkout preview only.</b> Payment has not been connected. These links do not accept or verify payments; do not send funds through this demo.</p>
-  <a href="https://www.blockchain.com/explorer/assets/btc" target="_blank" rel="noopener">₿ Bitcoin Explorer</a>
-  <a href="https://blockchair.com/litecoin" target="_blank" rel="noopener">Ł Litecoin Explorer</a>
- </div>
-</div>
-
 <script>
-const products=[
- {name:"Spotify Premium",category:"Music",desc:"12 Months · Full Access",price:1,currency:"€",icon:"♫",cls:"spotify"},
- {name:"Crunchyroll",category:"Streaming",desc:"1 Month · Full Access",price:.05,currency:"$",icon:"◉",cls:"crunchy"},
- {name:"NordVPN",category:"Security",desc:"Lifetime",price:.99,currency:"€",icon:"▲",cls:"nord"},
- {name:"Prime Video",category:"Streaming",desc:"1 Month · Full Access",price:1.29,currency:"€",icon:"prime video",cls:"prime"},
- {name:"Canva Pro",category:"Tools",desc:"1 Month · Full Access",price:.59,currency:"€",icon:"C",cls:""},
- {name:"ExpressVPN",category:"Security",desc:"Lifetime",price:.59,currency:"€",icon:"ϟ",cls:""},
- {name:"Discord Nitro",category:"Gaming",desc:"Digital product · See details",price:.79,currency:"€",icon:"♟",cls:""},
- {name:"Netflix",category:"Streaming",desc:"Digital product · See details",price:1.29,currency:"€",icon:"N",cls:""}
+const products = [
+  {name:"Spotify Premium",category:"music",icon:"♫",description:"12 months · Add your verified product details",price:1.00},
+  {name:"Crunchyroll",category:"streaming",icon:"◉",description:"1 month · Add your verified product details",price:0.05},
+  {name:"NordVPN",category:"security",icon:"⬟",description:"Lifetime · Only if officially authorized",price:0.99},
+  {name:"Prime Video",category:"streaming",icon:"▶",description:"1 month · Add your verified product details",price:1.29},
+  {name:"Canva Pro",category:"software",icon:"▦",description:"Add duration and delivery details",price:0.59},
+  {name:"ExpressVPN",category:"security",icon:"⬟",description:"Add verified license and terms",price:0.59},
+  {name:"Gaming Deals",category:"gaming",icon:"🎮",description:"Add the exact product and platform",price:0.99},
+  {name:"Digital Tools",category:"tools",icon:"⚒",description:"Add the exact tool and delivery details",price:0.99}
 ];
-let category="All";
-const grid=document.getElementById("grid");
-const search=document.getElementById("search");
-const topSearch=document.getElementById("topSearch");
-function render(){
- let q=(search.value||topSearch.value).trim().toLowerCase();
- let list=products.filter(p=>(category==="All"||p.category===category)&&(p.name+" "+p.category+" "+p.desc).toLowerCase().includes(q));
- if(document.getElementById("sort").value==="low")list.sort((a,b)=>a.price-b.price);
- if(document.getElementById("sort").value==="high")list.sort((a,b)=>b.price-a.price);
- grid.innerHTML=list.map(p=>`<article class="card">
- <div class="badge">${p.category}</div>
- <div class="producticon ${p.cls}">${p.icon}</div>
- <h3>${p.name}</h3><div class="desc">${p.desc}</div>
- <div class="price">${p.currency}${p.price.toFixed(2)}</div>
- <button class="buy" data-product="${p.name}">BUY NOW　→</button>
- </article>`).join("");
- document.getElementById("empty").style.display=list.length?"none":"block";
+
+let activeCategory = "all";
+const $ = id => document.getElementById(id);
+const money = p => p.price < 1 ? "$" + p.price.toFixed(2) : "€" + p.price.toFixed(2);
+
+function render() {
+  const query = $("search").value.trim().toLowerCase();
+  const sort = $("sort").value;
+  let list = products.filter(p =>
+    (activeCategory === "all" || p.category === activeCategory) &&
+    (p.name.toLowerCase().includes(query) || p.description.toLowerCase().includes(query))
+  );
+  if (sort === "low") list.sort((a,b) => a.price-b.price);
+  if (sort === "high") list.sort((a,b) => b.price-a.price);
+  if (sort === "name") list.sort((a,b) => a.name.localeCompare(b.name));
+
+  $("products").innerHTML = list.map(p => `
+    <article class="product">
+      <div class="tag">${p.category}</div>
+      <div class="product-image" aria-hidden="true">${p.icon}</div>
+      <h3>${p.name}</h3>
+      <p>${p.description}</p>
+      <div class="price">${money(p)}</div>
+      <button class="buy" data-name="${p.name}">VIEW DEAL →</button>
+    </article>
+  `).join("");
+  $("empty").hidden = list.length !== 0;
 }
-function setCategory(c){
- category=c;
- document.querySelectorAll("[data-cat]").forEach(b=>b.classList.toggle("active",b.dataset.cat===c));
- render();
-}
-document.querySelectorAll("[data-cat]").forEach(b=>b.addEventListener("click",()=>setCategory(b.dataset.cat)));
-search.addEventListener("input",()=>{topSearch.value=search.value;render()});
-topSearch.addEventListener("input",()=>{search.value=topSearch.value;render()});
-document.getElementById("sort").addEventListener("change",render);
-grid.addEventListener("click",e=>{
- const b=e.target.closest("[data-product]");if(!b)return;
- const p=products.find(x=>x.name===b.dataset.product);if(!p)return;
- document.getElementById("modalTitle").textContent=p.name;
- document.getElementById("modalDesc").textContent=p.desc+" · Listed price: "+p.currency+p.price.toFixed(2);
- document.getElementById("modal").style.display="block";
+
+$("categories").addEventListener("click", e => {
+  const btn = e.target.closest("[data-category]");
+  if (!btn) return;
+  activeCategory = btn.dataset.category;
+  document.querySelectorAll(".category").forEach(b =>
+    b.classList.toggle("active", b === btn)
+  );
+  render();
 });
-function closeModal(){document.getElementById("modal").style.display="none"}
-document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeModal()});
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+$("search").addEventListener("input", () => {
+  $("topSearch").value = $("search").value;
+  render();
+});
+$("topSearch").addEventListener("input", () => {
+  $("search").value = $("topSearch").value;
+  render();
+  $("shop").scrollIntoView({behavior:"smooth",block:"start"});
+});
+$("sort").addEventListener("change", render);
+$("products").addEventListener("click", e => {
+  const btn = e.target.closest("[data-name]");
+  if (!btn) return;
+  alert("Product: " + btn.dataset.name +
+    "\\nCheckout is not connected yet. Add your verified checkout URL before accepting orders.");
+});
+$("year").textContent = new Date().getFullYear();
 render();
 </script>
 </body>
-                                                                           </html>
-                                                                           
+</html>
