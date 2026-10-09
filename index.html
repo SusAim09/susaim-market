@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080909">
+<title>SusAim | Market</title>
+<style>
+:root{--bg:#080909;--card:#151512;--gold:#e8bd66;--muted:#aaa69c;--border:#383126}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#f7f4ed;font-family:Arial,sans-serif}
+header{padding:20px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #29271f}
+.logo{font-weight:900;font-size:21px}.gold{color:var(--gold)}
+.small{font-size:11px;color:var(--muted);letter-spacing:1px}
+.hero{text-align:center;padding:65px 6% 45px;background:radial-gradient(ellipse at top,#49351b,#080909 72%)}
+.pill{display:inline-block;border:1px solid #73572b;color:var(--gold);padding:9px 13px;border-radius:30px;font-size:11px}
+h1{font-size:clamp(38px,8vw,66px);letter-spacing:-2px;line-height:1.06;margin:22px 0 14px}
+.hero p{color:var(--muted);line-height:1.7;max-width:440px;margin:0 auto 24px}
+input{width:min(100%,440px);padding:14px;background:#131411;color:white;border:1px solid var(--border);border-radius:10px;outline:none}
+main{max-width:1150px;margin:auto;padding:30px 6% 65px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:23px}
+.filter{padding:10px 13px;border:1px solid var(--border);background:#141411;color:#ccc;border-radius:8px}
+.filter.active{border-color:var(--gold);color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,225px),1fr));gap:15px}
+.product{border:1px solid var(--border);background:linear-gradient(145deg,#1b1a16,#101110);border-radius:15px;padding:21px;transition:.2s}
+.product:hover{border-color:#9e7c41;transform:translateY(-3px)}
+.symbol{height:45px;width:45px;border-radius:12px;background:#302617;color:var(--gold);display:grid;place-items:center;font-size:23px;margin-bottom:18px}
+.category{font-size:10px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase}
+.product h2{font-size:18px;margin:10px 0}
+.product p{font-size:13px;color:var(--muted);line-height:1.6;min-height:20px}
+.buyrow{display:flex;justify-content:space-between;align-items:center;margin-top:22px;gap:8px}
+.buy,button{padding:11px 14px;border:0;border-radius:8px;background:var(--gold);color:#171108;font-weight:bold;text-decoration:none;cursor:pointer}
+.empty{display:none;text-align:center;color:var(--muted);padding:25px}
+footer{text-align:center;border-top:1px solid #29271f;padding:27px 6%;color:#aaa69c;font-size:12px;line-height:2}
+footer a{color:var(--gold)}
+.modal{display:none;position:fixed;inset:0;background:#000c;z-index:5;padding:20px;overflow:auto}
+.dialog{max-width:440px;margin:10vh auto;background:#151512;border:1px solid var(--border);border-radius:16px;padding:24px}
+.coin{display:block;margin-top:12px;padding:14px;background:#252116;border:1px solid #5c4829;color:var(--gold);border-radius:9px;text-align:center;text-decoration:none}
+.close{float:right;background:#333;color:white}
+.note{color:var(--muted);font-size:12px;line-height:1.7;overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">SusAim <span class="gold">| MARKET</span></div>
+  <div class="small">DIGITAL GOODS</div>
+</header>
+<section class="hero">
+  <div class="pill">✦ THE DIGITAL MARKETPLACE</div>
+  <h1>Premium digital.<br><span class="gold">Better prices.</span></h1>
+  <p>Discover digital subscriptions and tools at affordable prices, all in one place.</p>
+  <input id="search" placeholder="⌕ Search products..." aria-label="Search products">
+</section>
+<main>
+  <div class="filters">
+    <button class="filter active" data-category="All">All products</button>
+    <button class="filter" data-category="Streaming">Streaming</button>
+    <button class="filter" data-category="Music">Music</button>
+    <button class="filter" data-category="Security">Security</button>
+    <button class="filter" data-category="Tools">Tools</button>
+  </div>
+  <div class="grid" id="products"></div>
+  <div class="empty" id="empty">No products found.</div>
+</main>
+<footer>
+  <b>SusAim | Market</b><br>
+  BTC and LTC payment options · Manual verification<br>
+  Contact the store owner before sending crypto.<br>
+  Only products you're authorized to resell should be listed.
+</footer>
+<div class="modal" id="modal">
+  <div class="dialog">
+    <button class="close" onclick="closeCheckout()">Close ✕</button>
+    <div class="category">CHECKOUT</div>
+    <h2 id="checkoutName">Product</h2>
+    <p id="checkoutPrice"></p>
+    <p class="note">Choose a coin. Confirm the exact amount with the seller before sending. This demo does not calculate crypto exchange rates or verify payments.</p>
+    <a class="coin" id="btc" href="#" target="_blank" rel="noopener">₿ Bitcoin (BTC)</a>
+    <a class="coin" id="ltc" href="#" target="_blank" rel="noopener">Ł Litecoin (LTC)</a>
+    <p class="note" id="addressNote">Wallet addresses will be added to the published site in the next setup step.</p>
+    <button onclick="closeCheckout()">Back to store</button>
+  </div>
+</div>
+<script>
+const products=[
+{id:"spotify",name:"Spotify Premium",detail:"12 Months · Full Access",price:"€1.00",category:"Music",symbol:"♫"},
+{id:"crunchyroll",name:"Crunchyroll",detail:"1 Month · Full Access",price:"$0.05",category:"Streaming",symbol:"▶"},
+{id:"nordvpn",name:"NordVPN",detail:"Lifetime",price:"€0.99",category:"Security",symbol:"◈"},
+{id:"prime",name:"Prime Video",detail:"1 Month · Full Access",price:"€1.29",category:"Streaming",symbol:"▶"},
+{id:"canva",name:"Canva Pro",detail:"1 Month · Full Access",price:"€0.59",category:"Tools",symbol:"✦"},
+{id:"expressvpn",name:"ExpressVPN",detail:"Lifetime",price:"€0.59",category:"Security",symbol:"◈"}
+];
+let activeCategory="All";
+const grid=document.getElementById("products");
+function render(){
+ const q=document.getElementById("search").value.toLowerCase();
+ const filtered=products.filter(p=>(activeCategory==="All"||p.category===activeCategory)&&(p.name+" "+p.detail+" "+p.category).toLowerCase().includes(q));
+ grid.innerHTML=filtered.map(p=>`<article class="product">
+ <div class="symbol">${p.symbol}</div><div class="category">${p.category}</div>
+ <h2>${p.name}</h2><p>${p.detail}</p><div class="buyrow"><b>${p.price}</b>
+ <button onclick="checkout('${p.id}')">Buy ↗</button></div></article>`).join("");
+ document.getElementById("empty").style.display=filtered.length?"none":"block";
+}
+function checkout(id){
+ const p=products.find(x=>x.id===id);if(!p)return;
+ document.getElementById("checkoutName").textContent=p.name;
+ document.getElementById("checkoutPrice").textContent="Listed price: "+p.price;
+ document.getElementById("btc").href="https://www.blockchain.com/explorer/assets/btc";
+ document.getElementById("ltc").href="https://blockchair.com/litecoin";
+ document.getElementById("addressNote").textContent="This is a storefront demo. Actual wallet checkout is not connected yet.";
+ document.getElementById("modal").style.display="block";
+}
+function closeCheckout(){document.getElementById("modal").style.display="none"}
+document.getElementById("search").addEventListener("input",render);
+document.querySelectorAll(".filter").forEach(b=>b.addEventListener("click",()=>{
+ activeCategory=b.dataset.category;
+ document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x===b));
+ render();
+}));
+document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeCheckout()});
+render();
+</script>
+</body>
+  </html>
+  
