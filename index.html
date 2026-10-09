@@ -3,56 +3,270 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080909">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#050505">
 <title>SusAim | Market</title>
+<meta name="description" content="SusAim Market — a dark gaming-inspired digital marketplace.">
 <style>
-:root{--bg:#080909;--card:#151512;--gold:#e8bd66;--muted:#aaa69c;--border:#383126}
+:root {
+  --bg:#050505;
+  --panel:#101010;
+  --red:#f0182b;
+  --white:#f4f1f1;
+  --muted:#aaa5a5;
+  --line:#393333;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:#f7f4ed;font-family:Arial,sans-serif}
-header{padding:20px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #29271f}
-.logo{font-weight:900;font-size:21px}.gold{color:var(--gold)}
-.small{font-size:11px;color:var(--muted);letter-spacing:1px}
-.hero{text-align:center;padding:65px 6% 45px;background:radial-gradient(ellipse at top,#49351b,#080909 72%)}
-.pill{display:inline-block;border:1px solid #73572b;color:var(--gold);padding:9px 13px;border-radius:30px;font-size:11px}
-h1{font-size:clamp(38px,8vw,66px);letter-spacing:-2px;line-height:1.06;margin:22px 0 14px}
-.hero p{color:var(--muted);line-height:1.7;max-width:440px;margin:0 auto 24px}
-input{width:min(100%,440px);padding:14px;background:#131411;color:white;border:1px solid var(--border);border-radius:10px;outline:none}
-main{max-width:1150px;margin:auto;padding:30px 6% 65px}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:23px}
-.filter{padding:10px 13px;border:1px solid var(--border);background:#141411;color:#ccc;border-radius:8px}
-.filter.active{border-color:var(--gold);color:var(--gold)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,225px),1fr));gap:15px}
-.product{border:1px solid var(--border);background:linear-gradient(145deg,#1b1a16,#101110);border-radius:15px;padding:21px;transition:.2s}
-.product:hover{border-color:#9e7c41;transform:translateY(-3px)}
-.symbol{height:45px;width:45px;border-radius:12px;background:#302617;color:var(--gold);display:grid;place-items:center;font-size:23px;margin-bottom:18px}
-.category{font-size:10px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase}
-.product h2{font-size:18px;margin:10px 0}
-.product p{font-size:13px;color:var(--muted);line-height:1.6;min-height:20px}
-.buyrow{display:flex;justify-content:space-between;align-items:center;margin-top:22px;gap:8px}
-.buy,button{padding:11px 14px;border:0;border-radius:8px;background:var(--gold);color:#171108;font-weight:bold;text-decoration:none;cursor:pointer}
-.empty{display:none;text-align:center;color:var(--muted);padding:25px}
-footer{text-align:center;border-top:1px solid #29271f;padding:27px 6%;color:#aaa69c;font-size:12px;line-height:2}
-footer a{color:var(--gold)}
-.modal{display:none;position:fixed;inset:0;background:#000c;z-index:5;padding:20px;overflow:auto}
-.dialog{max-width:440px;margin:10vh auto;background:#151512;border:1px solid var(--border);border-radius:16px;padding:24px}
-.coin{display:block;margin-top:12px;padding:14px;background:#252116;border:1px solid #5c4829;color:var(--gold);border-radius:9px;text-align:center;text-decoration:none}
-.close{float:right;background:#333;color:white}
-.note{color:var(--muted);font-size:12px;line-height:1.7;overflow-wrap:anywhere}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--white);
+  font-family:Arial,Helvetica,sans-serif;overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  opacity:.16;
+  background-image:
+    repeating-linear-gradient(119deg,transparent 0 80px,#777 81px,transparent 82px 150px),
+    radial-gradient(ellipse at 20% 20%,#541017 0,transparent 38%);
+}
+a{color:inherit}
+button,input{font:inherit}
+button{cursor:pointer}
+header,main,footer,.hero,.ticker{position:relative;z-index:1}
+header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 6%;border-bottom:1px solid #292424;
+  background:#050505eF;gap:12px;
+}
+.logo{
+  font-size:20px;font-weight:1000;letter-spacing:-1px;
+  text-transform:uppercase;
+}
+.logo span{color:var(--red)}
+.header-tag{
+  font-size:10px;color:#d5cece;letter-spacing:2px;
+  border:1px solid #4a2529;padding:9px 11px;
+}
+.hero{
+  padding:45px 5% 42px;text-align:center;overflow:hidden;
+  background:
+    radial-gradient(ellipse at 50% 20%,#391015 0,transparent 48%),
+    linear-gradient(#090909,#050505);
+  border-bottom:1px solid #302426;
+}
+.hero:before,.hero:after{
+  content:"✦";position:absolute;color:var(--red);
+  font-size:36px;opacity:.65;animation:twinkle 3s infinite alternate;
+}
+.hero:before{left:8%;top:22%}
+.hero:after{right:9%;bottom:22%;animation-delay:1.2s}
+@keyframes twinkle{from{opacity:.25;transform:scale(.8)}to{opacity:1;transform:scale(1.1)}}
+.mascot{
+  width:112px;height:100px;margin:0 auto 18px;position:relative;
+  display:grid;place-items:center;
+  filter:drop-shadow(0 0 15px #ed172a55);
+}
+.cat{
+  width:86px;height:69px;background:#080808;position:relative;
+  border:2px solid #e6e0e0;
+  clip-path:polygon(0 20%,20% 0,34% 18%,66% 18%,80% 0,100% 20%,94% 78%,78% 100%,22% 100%,6% 78%);
+}
+.cat:before,.cat:after{
+  content:"";position:absolute;top:34px;width:20px;height:9px;
+  background:var(--red);box-shadow:0 0 12px var(--red);
+  clip-path:polygon(0 0,100% 35%,75% 100%,15% 70%);
+}
+.cat:before{left:14px}
+.cat:after{right:14px;transform:scaleX(-1)}
+.crown{
+  position:absolute;top:-3px;z-index:2;color:var(--white);
+  font-size:40px;text-shadow:2px 2px var(--red);
+}
+.eyebrow{
+  display:inline-block;border:1px solid #72232c;color:#ff4856;
+  padding:8px 12px;font-size:10px;letter-spacing:2px;
+  text-transform:uppercase;background:#16080a;
+}
+h1{
+  margin:19px 0 8px;font-size:clamp(44px,9vw,86px);
+  line-height:.88;letter-spacing:-4px;font-weight:1000;
+  text-transform:uppercase;text-shadow:3px 3px 0 #521018;
+}
+h1 span{
+  display:block;color:var(--red);font-style:italic;
+  text-shadow:3px 3px 0 #47060d;
+}
+.hero p{
+  max-width:510px;margin:21px auto;color:#c0baba;
+  line-height:1.7;font-size:14px;
+}
+.hero-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.primary,.secondary{
+  display:inline-block;text-decoration:none;padding:13px 18px;
+  font-weight:900;text-transform:uppercase;font-size:12px;
+  letter-spacing:1px;border:1px solid var(--red);
+}
+.primary{background:var(--red);color:white}
+.secondary{background:#080808;color:white;border-color:#5b5151}
+.ticker{
+  border-bottom:1px solid #352427;background:#0d090a;
+  padding:12px 0;overflow:hidden;white-space:nowrap;
+  color:#ddd;font-size:10px;font-weight:bold;letter-spacing:3px;
+}
+.ticker span{color:var(--red);padding:0 18px}
+main{max-width:1200px;margin:auto;padding:36px 5% 70px}
+.section-heading{
+  display:flex;align-items:end;justify-content:space-between;
+  gap:15px;margin-bottom:24px;flex-wrap:wrap;
+}
+.kicker{color:var(--red);font-size:10px;letter-spacing:3px;font-weight:bold}
+h2.section-title{
+  margin:7px 0 0;font-size:clamp(26px,5vw,40px);
+  letter-spacing:-1.5px;text-transform:uppercase;
+}
+.section-title span{color:var(--red)}
+#search{
+  width:100%;max-width:340px;background:#0d0d0d;color:white;
+  border:1px solid #44383a;padding:13px 14px;outline:none;
+}
+#search:focus{border-color:var(--red)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.filter{
+  background:#0d0d0d;color:#c9c3c3;border:1px solid #393232;
+  padding:10px 13px;font-size:11px;text-transform:uppercase;
+  letter-spacing:.6px;
+}
+.filter.active,.filter:hover{
+  color:white;background:#391016;border-color:var(--red);
+}
+.grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;
+}
+.product{
+  position:relative;overflow:hidden;min-width:0;
+  padding:21px;background:
+    linear-gradient(135deg,#171515,#090909 65%);
+  border:1px solid #393333;box-shadow:4px 4px 0 #21090c;
+  transition:transform .2s,border-color .2s;
+}
+.product:before{
+  content:"";position:absolute;top:0;left:0;width:48px;height:3px;
+  background:var(--red);
+}
+.product:after{
+  content:"";position:absolute;right:-25px;top:-35px;width:90px;height:90px;
+  border:1px solid #35151a;transform:rotate(35deg);pointer-events:none;
+}
+.product:hover{transform:translateY(-4px);border-color:var(--red)}
+.product-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.symbol{
+  display:grid;place-items:center;width:45px;height:45px;
+  border:1px solid #67202a;background:#23090d;color:#ff3344;
+  font-size:22px;font-weight:900;
+}
+.category{font-size:9px;color:#ff5662;letter-spacing:1.5px;text-transform:uppercase}
+.product h3{font-size:19px;margin:20px 0 9px}
+.product p{color:var(--muted);font-size:12px;line-height:1.6;min-height:20px}
+.buyrow{
+  border-top:1px solid #33292b;margin-top:18px;padding-top:16px;
+  display:flex;justify-content:space-between;align-items:center;gap:8px;
+}
+.price{font-size:17px;font-weight:900;overflow-wrap:anywhere}
+.buy{
+  background:var(--red);color:white;border:1px solid var(--red);
+  padding:11px 12px;font-size:10px;font-weight:900;
+  text-transform:uppercase;letter-spacing:.7px;
+}
+.buy:hover{background:#bd1020}
+.empty{display:none;text-align:center;padding:35px;color:var(--muted)}
+.trust{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:35px;
+}
+.trust article{border:1px solid #30292a;background:#0c0c0c;padding:18px}
+.trust b{display:block;font-size:12px;margin-bottom:7px;text-transform:uppercase}
+.trust p{margin:0;color:var(--muted);font-size:11px;line-height:1.6}
+footer{
+  border-top:1px solid #33292b;padding:28px 6%;
+  text-align:center;color:#aaa;font-size:11px;line-height:2;
+  background:#080808;
+}
+footer strong{color:white;font-size:15px}
+footer span{color:var(--red)}
+.modal{
+  display:none;position:fixed;inset:0;background:#000e;z-index:10;
+  padding:20px;overflow:auto;
+}
+.dialog{
+  max-width:440px;margin:8vh auto;padding:24px;
+  border:1px solid #7a222c;background:#0d0c0c;
+  box-shadow:0 0 40px #ed172a22;
+}
+.dialog h2{margin-top:24px}
+.dialog p{font-size:13px;line-height:1.7;color:#bbb}
+.coin{
+  display:block;margin-top:12px;padding:14px;text-align:center;
+  text-decoration:none;background:#21090d;border:1px solid #79202b;
+  color:white;font-weight:bold;
+}
+.close{float:right;background:#292323;color:white;border:1px solid #514747;padding:9px}
+.note{font-size:11px!important;color:#aaa!important;overflow-wrap:anywhere}
+@media(max-width:800px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:520px){
+  header{padding:15px 5%}
+  .logo{font-size:17px}
+  .header-tag{font-size:8px;letter-spacing:1px;padding:8px}
+  .hero{padding:35px 5%}
+  h1{letter-spacing:-2px}
+  main{padding:29px 5% 48px}
+  .section-heading{align-items:stretch}
+  #search{max-width:none}
+  .grid{grid-template-columns:1fr;gap:13px}
+  .product{padding:19px}
+  .trust{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}
+}
 </style>
 </head>
 <body>
+
 <header>
-  <div class="logo">SusAim <span class="gold">| MARKET</span></div>
-  <div class="small">DIGITAL GOODS</div>
+  <div class="logo">SUSAIM <span>| MARKET</span></div>
+  <div class="header-tag">✦ DIGITAL GOODS ✦</div>
 </header>
+
 <section class="hero">
-  <div class="pill">✦ THE DIGITAL MARKETPLACE</div>
-  <h1>Premium digital.<br><span class="gold">Better prices.</span></h1>
-  <p>Discover digital subscriptions and tools at affordable prices, all in one place.</p>
-  <input id="search" placeholder="⌕ Search products..." aria-label="Search products">
+  <div class="mascot" aria-label="Stylized crowned black cat mascot">
+    <div class="crown">♛</div>
+    <div class="cat"></div>
+  </div>
+  <div class="eyebrow">✦ The underground digital marketplace ✦</div>
+  <h1>SUSAIM <span>MARKET</span></h1>
+  <p>Gaming-inspired design. Digital deals. Browse the catalogue and find what you're looking for.</p>
+  <div class="hero-actions">
+    <a class="primary" href="#catalogue">Explore products ↘</a>
+    <a class="secondary" href="#about">About the market</a>
+  </div>
 </section>
-<main>
+
+<div class="ticker">
+  <span>✦</span> SUSAIM MARKET <span>✦</span> GAMING CULTURE
+  <span>✦</span> DARK MODE ALWAYS <span>✦</span> DIGITAL GOODS
+  <span>✦</span> SUSAIM MARKET <span>✦</span>
+</div>
+
+<main id="catalogue">
+  <div class="section-heading">
+    <div>
+      <div class="kicker">// THE CATALOGUE</div>
+      <h2 class="section-title">FIND YOUR <span>DEAL.</span></h2>
+    </div>
+    <input id="search" type="search" placeholder="⌕ Search products..." aria-label="Search products">
+  </div>
+
   <div class="filters">
     <button class="filter active" data-category="All">All products</button>
     <button class="filter" data-category="Streaming">Streaming</button>
@@ -60,66 +274,114 @@ footer a{color:var(--gold)}
     <button class="filter" data-category="Security">Security</button>
     <button class="filter" data-category="Tools">Tools</button>
   </div>
+
   <div class="grid" id="products"></div>
-  <div class="empty" id="empty">No products found.</div>
+  <div class="empty" id="empty">NO MATCHES FOUND. TRY ANOTHER SEARCH.</div>
+
+  <section class="trust" id="about">
+    <article><b>✦ Clear listings</b><p>Review each product description and price before ordering.</p></article>
+    <article><b>♛ Contact first</b><p>Confirm availability, delivery details, and payment instructions before sending money.</p></article>
+    <article><b>✦ Authorized products</b><p>Only buy or sell products you are permitted to distribute.</p></article>
+  </section>
 </main>
+
 <footer>
-  <b>SusAim | Market</b><br>
-  BTC and LTC payment options · Manual verification<br>
-  Contact the store owner before sending crypto.<br>
-  Only products you're authorized to resell should be listed.
+  <strong>SUSAIM <span>| MARKET</span></strong><br>
+  A gaming-inspired digital storefront.<br>
+  Payment options are not connected until a verified checkout is configured.<br>
+  © <span id="year"></span> SusAim Market
 </footer>
-<div class="modal" id="modal">
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="checkoutName">
   <div class="dialog">
-    <button class="close" onclick="closeCheckout()">Close ✕</button>
-    <div class="category">CHECKOUT</div>
+    <button class="close" onclick="closeCheckout()">CLOSE ✕</button>
+    <div class="kicker">// CHECKOUT PREVIEW</div>
     <h2 id="checkoutName">Product</h2>
     <p id="checkoutPrice"></p>
-    <p class="note">Choose a coin. Confirm the exact amount with the seller before sending. This demo does not calculate crypto exchange rates or verify payments.</p>
-    <a class="coin" id="btc" href="#" target="_blank" rel="noopener">₿ Bitcoin (BTC)</a>
-    <a class="coin" id="ltc" href="#" target="_blank" rel="noopener">Ł Litecoin (LTC)</a>
-    <p class="note" id="addressNote">Wallet addresses will be added to the published site in the next setup step.</p>
-    <button onclick="closeCheckout()">Back to store</button>
+    <p class="note">This is a checkout demo. The buttons below do not send payment, calculate crypto amounts, or verify transactions. Do not send funds using this demo.</p>
+    <a class="coin" id="btc" href="https://www.blockchain.com/explorer/assets/btc" target="_blank" rel="noopener">₿ Bitcoin explorer</a>
+    <a class="coin" id="ltc" href="https://blockchair.com/litecoin" target="_blank" rel="noopener">Ł Litecoin explorer</a>
+    <p class="note">Actual checkout must be connected and tested before accepting orders.</p>
+    <button class="buy" onclick="closeCheckout()">Back to catalogue</button>
   </div>
 </div>
+
 <script>
-const products=[
-{id:"spotify",name:"Spotify Premium",detail:"12 Months · Full Access",price:"€1.00",category:"Music",symbol:"♫"},
-{id:"crunchyroll",name:"Crunchyroll",detail:"1 Month · Full Access",price:"$0.05",category:"Streaming",symbol:"▶"},
-{id:"nordvpn",name:"NordVPN",detail:"Lifetime",price:"€0.99",category:"Security",symbol:"◈"},
-{id:"prime",name:"Prime Video",detail:"1 Month · Full Access",price:"€1.29",category:"Streaming",symbol:"▶"},
-{id:"canva",name:"Canva Pro",detail:"1 Month · Full Access",price:"€0.59",category:"Tools",symbol:"✦"},
-{id:"expressvpn",name:"ExpressVPN",detail:"Lifetime",price:"€0.59",category:"Security",symbol:"◈"}
+const products = [
+  {id:"spotify",name:"Spotify Premium",detail:"12 Months · Full Access",price:"€1.00",category:"Music",symbol:"♫"},
+  {id:"crunchyroll",name:"Crunchyroll",detail:"1 Month · Full Access",price:"$0.05",category:"Streaming",symbol:"▶"},
+  {id:"nordvpn",name:"NordVPN",detail:"Lifetime",price:"€0.99",category:"Security",symbol:"◈"},
+  {id:"prime",name:"Prime Video",detail:"1 Month · Full Access",price:"€1.29",category:"Streaming",symbol:"▶"},
+  {id:"canva",name:"Canva Pro",detail:"1 Month · Full Access",price:"€0.59",category:"Tools",symbol:"✦"},
+  {id:"expressvpn",name:"ExpressVPN",detail:"Lifetime",price:"€0.59",category:"Security",symbol:"◈"}
 ];
-let activeCategory="All";
-const grid=document.getElementById("products");
-function render(){
- const q=document.getElementById("search").value.toLowerCase();
- const filtered=products.filter(p=>(activeCategory==="All"||p.category===activeCategory)&&(p.name+" "+p.detail+" "+p.category).toLowerCase().includes(q));
- grid.innerHTML=filtered.map(p=>`<article class="product">
- <div class="symbol">${p.symbol}</div><div class="category">${p.category}</div>
- <h2>${p.name}</h2><p>${p.detail}</p><div class="buyrow"><b>${p.price}</b>
- <button onclick="checkout('${p.id}')">Buy ↗</button></div></article>`).join("");
- document.getElementById("empty").style.display=filtered.length?"none":"block";
+
+let activeCategory = "All";
+const grid = document.getElementById("products");
+const search = document.getElementById("search");
+
+function renderProducts(){
+  const query = search.value.trim().toLowerCase();
+  const filtered = products.filter(product =>
+    (activeCategory === "All" || product.category === activeCategory) &&
+    (product.name + " " + product.detail + " " + product.category)
+      .toLowerCase().includes(query)
+  );
+
+  grid.innerHTML = filtered.map(product => `
+    <article class="product">
+      <div class="product-top">
+        <div class="symbol">${product.symbol}</div>
+        <div class="category">${product.category}</div>
+      </div>
+      <h3>${product.name}</h3>
+      <p>${product.detail}</p>
+      <div class="buyrow">
+        <div class="price">${product.price}</div>
+        <button class="buy" onclick="checkout('${product.id}')">Details ↗</button>
+      </div>
+    </article>
+  `).join("");
+
+  document.getElementById("empty").style.display =
+    filtered.length ? "none" : "block";
 }
+
 function checkout(id){
- const p=products.find(x=>x.id===id);if(!p)return;
- document.getElementById("checkoutName").textContent=p.name;
- document.getElementById("checkoutPrice").textContent="Listed price: "+p.price;
- document.getElementById("btc").href="https://www.blockchain.com/explorer/assets/btc";
- document.getElementById("ltc").href="https://blockchair.com/litecoin";
- document.getElementById("addressNote").textContent="This is a storefront demo. Actual wallet checkout is not connected yet.";
- document.getElementById("modal").style.display="block";
+  const product = products.find(item => item.id === id);
+  if(!product) return;
+  document.getElementById("checkoutName").textContent = product.name;
+  document.getElementById("checkoutPrice").textContent =
+    product.detail + " · Listed price: " + product.price;
+  document.getElementById("modal").style.display = "block";
 }
-function closeCheckout(){document.getElementById("modal").style.display="none"}
-document.getElementById("search").addEventListener("input",render);
-document.querySelectorAll(".filter").forEach(b=>b.addEventListener("click",()=>{
- activeCategory=b.dataset.category;
- document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x===b));
- render();
-}));
-document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeCheckout()});
-render();
+
+function closeCheckout(){
+  document.getElementById("modal").style.display = "none";
+}
+
+search.addEventListener("input", renderProducts);
+
+document.querySelectorAll(".filter").forEach(button => {
+  button.addEventListener("click", () => {
+    activeCategory = button.dataset.category;
+    document.querySelectorAll(".filter").forEach(item => {
+      item.classList.toggle("active", item === button);
+    });
+    renderProducts();
+  });
+});
+
+document.getElementById("modal").addEventListener("click", event => {
+  if(event.target.id === "modal") closeCheckout();
+});
+
+document.addEventListener("keydown", event => {
+  if(event.key === "Escape") closeCheckout();
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+renderProducts();
 </script>
 </body>
   </html>
